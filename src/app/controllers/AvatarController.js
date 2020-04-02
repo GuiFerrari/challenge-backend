@@ -40,6 +40,7 @@ class AvatarController {
         id: newFile.id,
         name: newFile.name,
         path: newFile.path,
+        url: newFile.url,
       },
     });
   }

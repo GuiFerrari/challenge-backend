@@ -48,9 +48,9 @@ class CourierController {
       name,
       email,
       avatar: {
-        id: file.id,
         name: file.name,
         path: file.path,
+        url: file.url,
       },
     });
   }
