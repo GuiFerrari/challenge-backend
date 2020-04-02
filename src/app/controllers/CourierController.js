@@ -4,6 +4,13 @@ import Courier from '../models/Courier';
 import File from '../models/File';
 
 class CourierController {
+  async index(req, res) {
+    const courier = await Courier.findAll({
+      order: ['created_at'],
+    });
+    return res.json(courier);
+  }
+
   async store(req, res) {
     const { originalname, filename: path } = req.file;
 
@@ -92,6 +99,27 @@ class CourierController {
       name,
       email,
     });
+  }
+
+  async delete(req, res) {
+    const exists = await Courier.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    console.log(exists);
+
+    if (!exists) {
+      return res.status(400).json({ error: 'Courier not found' });
+    }
+
+    await Courier.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    return res.send();
   }
 }
 

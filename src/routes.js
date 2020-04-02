@@ -20,6 +20,7 @@ routes.use(authMiddleware);
 routes.post('/recipient', adminMiddleware, RecipientController.store);
 routes.put('/recipient/:id', adminMiddleware, RecipientController.update);
 
+routes.get('/couriers', adminMiddleware, CourierController.index);
 routes.post(
   '/couriers',
   adminMiddleware,
@@ -27,6 +28,7 @@ routes.post(
   CourierController.store
 );
 routes.put('/couriers/:id', adminMiddleware, CourierController.update);
+routes.delete('/couriers/:id', adminMiddleware, CourierController.delete);
 
 routes.put(
   '/couriers/avatar/:id',
