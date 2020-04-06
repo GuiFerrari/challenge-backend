@@ -108,8 +108,6 @@ class CourierController {
       },
     });
 
-    console.log(exists);
-
     if (!exists) {
       return res.status(400).json({ error: 'Courier not found' });
     }
